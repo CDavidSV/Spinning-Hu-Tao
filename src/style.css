@@ -13,7 +13,7 @@ html, body {
 
 .Hu-Tao {
     width: 350px;
-    animation: rotation 2.5s infinite linear;
+    animation: rotation 2.3s infinite linear;
 }
 
 .text-container {
@@ -30,7 +30,7 @@ html, body {
     font-size: 64px;  
     font-family: sans-serif;
     color: white;
-    text-shadow: 2px 2px 3px black;
+    text-shadow: 3px 3px 4px black;
 }
 
 @keyframes rotation {
@@ -39,5 +39,11 @@ html, body {
     }
     to {
         transform: rotate(359deg);
+    }
+}
+
+@media (max-width: 800px) {
+    .Hu-Tao {
+        width: 150px;
     }
 }
