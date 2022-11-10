@@ -1,6 +1,8 @@
-html, body {
+html,
+body {
     margin: 0;
     height: 100%;
+    transition: 0.5s;
 }
 
 .img-container {
@@ -13,7 +15,7 @@ html, body {
 
 .Hu-Tao {
     width: 350px;
-    animation: rotation 2.3s infinite linear;
+    animation: rotation 2.1s infinite linear;
 }
 
 .text-container {
@@ -27,16 +29,48 @@ html, body {
 
 .rotations {
     position: absolute;
-    font-size: 64px;  
+    font-size: 64px;
     font-family: sans-serif;
     color: white;
     text-shadow: 3px 3px 4px black;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.mute {
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+}
+
+.mute:hover {
+    cursor: pointer;
+}
+
+.theme {
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+}
+
+.theme:hover {
+    cursor: pointer;
+}
+
+.mute-img {
+    position: relative;
+    width: 60px;
 }
 
 @keyframes rotation {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(359deg);
     }
