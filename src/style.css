@@ -15,7 +15,7 @@ body {
 
 .Hu-Tao {
     width: 350px;
-    animation: rotation 2.1s infinite linear;
+    animation: rotation 2.2s infinite linear;
 }
 
 .text-container {
@@ -64,6 +64,13 @@ body {
 .mute-img {
     position: relative;
     width: 60px;
+}
+
+.msg {
+    position: absolute;
+    font-family: sans-serif;
+    color: black;
+    bottom: 0;
 }
 
 @keyframes rotation {
