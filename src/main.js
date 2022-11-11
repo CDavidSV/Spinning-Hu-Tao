@@ -14,7 +14,7 @@ audio.volume = 0.6;
 //Variables.
 let rotations = 0;
 let playClicked = false;
-let themeClicked = false;
+let theme = 'white';
 let counter = 0;
 const messages = [
     { spins: 10, msg: "You like Hu Tao don't you." },
@@ -30,16 +30,16 @@ const messages = [
 
 // Load cookies.
 if (!document.cookie) {
-    setCookie();
-    document.cookie = `theme=${themeClicked}`;
+    setCookie("theme", theme);
 } else {
     const cookiesObj = getCookie(document.cookie);
-
-    if (cookiesObj[0].value != 'false') {
-        body.style = "background-color: black;";
-        messageContent.style = "color: white;";
-        themeModeBtn.src = "../assets/images/light.svg";
-        themeClicked = true;
+    for (let cookieObj of cookiesObj) {
+        if(cookieObj.cookie == "theme" && cookieObj.value == "black") {
+            body.style = "background-color: black;";
+            messageContent.style = "color: white;";
+            themeModeBtn.src = "../assets/images/light.svg";
+            theme = "black";
+        }
     }
 }
 
@@ -70,11 +70,11 @@ function setCookie(name, value) {
 
 function getCookie(cookie) {
     cookiesArr = cookie.split(' ');
-    cookliesObj = [];
+    cookiesObj = [];
     for (cookie of cookiesArr) {
-        cookliesObj.push({ cookie: cookie.split("=")[0], value: cookie.split("=")[1] });
+        cookiesObj.push({ cookie: cookie.split("=")[0], value: cookie.split("=")[1] });
     }
-    return cookliesObj;
+    return cookiesObj;
 }
 
 // Listeners.
@@ -107,17 +107,17 @@ muteBtn.addEventListener('click', () => {
 });
 
 themeModeBtn.addEventListener('click', () => {
-    if (themeClicked) {
+    if (theme == "black") {
         body.style = "background-color: white;";
         themeModeBtn.src = "../assets/images/dark.svg";
         messageContent.style = "color: black;";
-        themeClicked = false;
-        setCookie("theme", false);
+        theme = 'white';
+        setCookie("theme", "white");
         return;
     }
     body.style = "background-color: black;";
     themeModeBtn.src = "../assets/images/light.svg";
     messageContent.style = "color: white;";
-    themeClicked = true;
-    setCookie("theme", true);
+    theme = 'black';
+    setCookie("theme", "black");
 });
