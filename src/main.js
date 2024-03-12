@@ -65,7 +65,9 @@ function formatNumbers(number) {
 }
 
 function setCookie(name, value) {
-    document.cookie = `${name}=${value}`;
+    const date = new Date();
+    date.setFullYear(date.getFullYear() + 10);
+    document.cookie = `${name}=${value};expires=${date.toUTCString()}`;
 }
 
 function getCookie(cookie) {
