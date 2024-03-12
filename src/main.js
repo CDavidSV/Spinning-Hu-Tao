@@ -7,7 +7,7 @@ const body = document.getElementById('body-theme');
 const messageContent = document.getElementById('content-msg');
 
 // Setup audio.
-var audio = new Audio('../assets/audio/Hu tao edit Im a Ghost - Audio Edit.mp3');
+var audio = new Audio('./assets/audio/Hu tao edit Im a Ghost - Audio Edit.mp3');
 audio.loop = true;
 audio.volume = 0.3;
 
@@ -37,7 +37,7 @@ if (!document.cookie) {
         if(cookieObj.cookie == "theme" && cookieObj.value == "black") {
             body.style = "background-color: black;";
             messageContent.style = "color: white;";
-            themeModeBtn.src = "../assets/images/light.svg";
+            themeModeBtn.src = "./assets/images/light.svg";
             theme = "black";
         }
     }
@@ -96,27 +96,27 @@ spinningHuTao.addEventListener('animationiteration', () => {
 muteBtn.addEventListener('click', () => {
     if (playClicked) {
         audio.pause();
-        muteBtn.src = "../assets/images/muted.svg";
+        muteBtn.src = "./assets/images/muted.svg";
         playClicked = false;
         return;
     }
     audio.play();
 
-    muteBtn.src = "../assets/images/unmuted.svg";
+    muteBtn.src = "./assets/images/unmuted.svg";
     playClicked = true;
 });
 
 themeModeBtn.addEventListener('click', () => {
     if (theme == "black") {
         body.style = "background-color: white;";
-        themeModeBtn.src = "../assets/images/dark.svg";
+        themeModeBtn.src = "./assets/images/dark.svg";
         messageContent.style = "color: black;";
         theme = 'white';
         setCookie("theme", "white");
         return;
     }
     body.style = "background-color: black;";
-    themeModeBtn.src = "../assets/images/light.svg";
+    themeModeBtn.src = "./assets/images/light.svg";
     messageContent.style = "color: white;";
     theme = 'black';
     setCookie("theme", "black");
