@@ -28,19 +28,15 @@ const messages = [
     { spins: 1000000, msg: "Man you should just work for miHoYo at this point." },
 ];
 
-// Load cookies.
-if (!document.cookie) {
-    setCookie("theme", theme);
+// Load theme from localStorage.
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "black") {
+    body.style = "background-color: black;";
+    messageContent.style = "color: white;";
+    themeModeBtn.src = "./assets/images/light.svg";
+    theme = "black";
 } else {
-    const cookiesObj = getCookie(document.cookie);
-    for (let cookieObj of cookiesObj) {
-        if(cookieObj.cookie == "theme" && cookieObj.value == "black") {
-            body.style = "background-color: black;";
-            messageContent.style = "color: white;";
-            themeModeBtn.src = "./assets/images/light.svg";
-            theme = "black";
-        }
-    }
+    localStorage.setItem("theme", "white");
 }
 
 // Functions.
@@ -64,20 +60,7 @@ function formatNumbers(number) {
     return numberStringRev;
 }
 
-function setCookie(name, value) {
-    const date = new Date();
-    date.setFullYear(date.getFullYear() + 10);
-    document.cookie = `${name}=${value};expires=${date.toUTCString()}`;
-}
 
-function getCookie(cookie) {
-    cookiesArr = cookie.split(' ');
-    cookiesObj = [];
-    for (cookie of cookiesArr) {
-        cookiesObj.push({ cookie: cookie.split("=")[0], value: cookie.split("=")[1] });
-    }
-    return cookiesObj;
-}
 
 // Listeners.
 spinningHuTao.addEventListener('animationiteration', () => {
@@ -114,12 +97,12 @@ themeModeBtn.addEventListener('click', () => {
         themeModeBtn.src = "./assets/images/dark.svg";
         messageContent.style = "color: black;";
         theme = 'white';
-        setCookie("theme", "white");
+        localStorage.setItem("theme", "white");
         return;
     }
     body.style = "background-color: black;";
     themeModeBtn.src = "./assets/images/light.svg";
     messageContent.style = "color: white;";
     theme = 'black';
-    setCookie("theme", "black");
+    localStorage.setItem("theme", "black");
 });
